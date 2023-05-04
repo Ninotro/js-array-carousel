@@ -34,7 +34,7 @@ main {
 .button {
     background-color: #cccccc;
     border-radius: 999px;
-    padding: 1px;
+    padding: 2px;
     position: absolute; 
     transform: translate(50%,0%);
     right: 50%;
