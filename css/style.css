@@ -4,7 +4,7 @@
     box-sizing:border-box;
 }
 
-main {
+#mainpart {
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -12,11 +12,17 @@ main {
 
 }
 
+#centratore {
+    height: 200px;
+    width: 300px;
+    position: relative;
+
+}
+
 
 .container {
     height: 200px;
     width: 300px;
-    position: relative;
     display: none;
     
     
@@ -56,4 +62,8 @@ main {
 
 .active {
     display:block
+}
+
+.hidden {
+    display: none;
 }

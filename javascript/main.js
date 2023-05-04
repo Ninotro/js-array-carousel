@@ -5,27 +5,22 @@ let arrayImg = ["img/01.webp", "img/02.webp" , "img/03.webp" , "img/04.webp", "i
 let inizio = 0;
 
 // creo il primo elemento div con immagine e bottoni e lo inserisco all'interno del primo container
-let main_part = document.getElementById("mainpart")
+let centratore = document.getElementById("centratore")
 const new_div1 = document.createElement("div");
-main_part.append (new_div1);
+centratore.append (new_div1);
 new_div1.className += " container";
 new_div1.className += " active";
 const new_image = document.createElement("img");
 new_image.setAttribute("src", arrayImg[inizio]);
 new_div1.append(new_image);
-// definisco i bottoni
-const bottone= document.querySelector(".button.next");
-new_div1.append(bottone)
-const bottone2= document.querySelector(".button.before");
-new_div1.append(bottone2)
+
 
 
 // creo i div e inserisco le immagini dentro e ad ogni div associo la classe container
-for (i=0; i<arrayImg.length;i++) {
+for (i=0; i<arrayImg.length-1;i++) {
     // creo il div
     const new_div = document.createElement("div");
-    
-    main_part.append (new_div)
+    centratore.append (new_div)
     new_div.className += " container";
     
     
@@ -54,34 +49,69 @@ for (i=0; i<arrayImg.length;i++) {
 
 const container_div = document.querySelectorAll (".container");
 
-console.log(container_div);
+
 
  let container_div_active = 0 ;
 
- 
+ let bottone = document.querySelector(".next")
 
- bottone.addEventListener ("click",
- function(){
-        // se non siamo all'ultimo div
-    if (container_div_active < container_div.lenght) {
-        // togliere la classe al primo
-        container_div[container_div_active].classList.remove ("active")
 
-        // passiamo al prossimo div
 
-        container_div_active = container_div_active + 1
-
-        // al prossimo div aggiungiamo la classe active
-
-        container_div[container_div_active].classList.add ("active")
-
+ bottone.addEventListener("click",
+ function(){ 
+    if(container_div_active < (container_div.length - 1)) {
         
+             
+    // rimuovo la classe active
+    container_div[container_div_active].classList.remove ("active");
+    
+    // vado al div successivo
+
+    container_div_active = container_div_active + 1 
+
+    bottone2.classList.remove ("hidden");
+
+    // aggiungo la classe active
+
+    container_div[container_div_active].classList.add ("active");
+        // lo nascondo se sono all'ultima immagine
+    if (container_div_active === (container_div.length - 1)) {
+        bottone.classList.add ("hidden");
+
 
     }
 
-    
-
+}             
  }
  )
+// Aggiungo l'evento click all'altro bottone
+
+let bottone2 = document.querySelector(".before")
+
+bottone2.addEventListener("click",
+function(){ 
+   if(container_div_active > 0 ) {
+
+    bottone.classList.remove ("hidden");
+   // rimuovo la classe active
+   container_div[container_div_active].classList.remove ("active");
+   
+   // vado al div successivo
+
+   container_div_active = container_div_active - 1  
+
+   // aggiungo la classe active
+
+   container_div[container_div_active].classList.add ("active");
+       // lo nascondo se sono all'ultima immagine
+   if (container_div_active === 0) {
+       bottone2.classList.add ("hidden");
+
+
+   }
+
+}             
+}
+)
 
 
